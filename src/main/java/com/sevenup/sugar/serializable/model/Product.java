@@ -4,22 +4,26 @@ import java.io.IOException;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-/**
- * Created by nonumber1989 on 2019/11/23.
- */
 public class Product implements Serializable {
-    private String name;
-    private Double price;
-    private int count;
+    public final String id = "productID";
+    public String name;
+    public Double price;
+    public int count;
 
     public Product() {
     }
 
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
         System.out.println("writeObject");
+        out.writeObject(new StringBuffer(this.name).reverse());
+        out.writeDouble(this.price + 100);
+        out.writeInt(count - 10);
     }
 
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+        this.name = ((StringBuffer) in.readObject()).reverse().toString();
+        this.price = in.readDouble() - 100;
+        this.count = in.readInt() + 10;
         System.out.println("readObject");
     }
 
@@ -27,27 +31,13 @@ public class Product implements Serializable {
         System.out.println("readObjectNoData");
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", count=" + count +
+                '}';
     }
 }
