@@ -1,8 +1,10 @@
 package com.sevenup.sugar.serializable.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     public String city;
-    public Long code;
+    transient public Long code;
 
     public Address() {
         System.out.println("Address Constructor");
