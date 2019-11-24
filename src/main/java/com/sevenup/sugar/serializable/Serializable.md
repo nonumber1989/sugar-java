@@ -6,7 +6,10 @@ https://www.cnblogs.com/wxgblogs/p/5849951.html
 https://www.javaworld.com/article/2076120/flatten-your-objects.html?page=2
 https://docs.oracle.com/en/java/javase/12/docs/specs/serialization/index.html
 https://www.oracle.com/technical-resources/articles/javase/jdo.html
+https://www.hollischuang.com/archives/1140
 
+https://paper.seebug.org/312/
+https://blog.csdn.net/kjfcpua/article/details/8591708
 
 ### 什么是序列化
 > java序列化 就是把java对象以二进制流的形式存储到文件或者通过网络传输到其他进程中，并方便其他java进程重建java对象的规范
