@@ -38,7 +38,14 @@ https://blog.csdn.net/kjfcpua/article/details/8591708
     
     public class Human {
         public String state;
+        @Override
+        public String toString() {
+            return "Human{" +
+                    "state='" + state + '\'' +
+                    '}';
+        }
     }
+
  ---
     package com.sevenup.sugar.serializable.model;
     
@@ -133,7 +140,8 @@ https://blog.csdn.net/kjfcpua/article/details/8591708
             try (FileInputStream fileInputStream = new FileInputStream(USER_FILE_PATH);
                  ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
                 User user = (User) objectInputStream.readObject();
-                System.out.println(user);
+                System.out.println("user information:" + user);
+                System.out.println("human state:" + user.state);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -143,7 +151,8 @@ https://blog.csdn.net/kjfcpua/article/details/8591708
 输出:
 
     User Constructor
-    User{name='steven', age=1, birthday=Sun Nov 24 22:27:34 CST 2019, address=Address{city='Shanghai', code=100}}
+    user information:User{name='steven', age=1, birthday=Wed Dec 04 22:18:40 CST 2019, address=Address{city='Shanghai', code=null}}
+    human state:null
 ---
 #### transient关键字
 > transient标记的字段不会被序列化，反序列化时会以初始值填充（基本类型为默认值 比如int为0，boolean 为false；引用类型为null)

@@ -39,7 +39,8 @@ public class SimpleSerializable {
         try (FileInputStream fileInputStream = new FileInputStream(USER_FILE_PATH);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             User user = (User) objectInputStream.readObject();
-            System.out.println(user);
+            System.out.println("user information:" + user);
+            System.out.println("human state:" + user.state);
         } catch (Exception e) {
             e.printStackTrace();
         }
